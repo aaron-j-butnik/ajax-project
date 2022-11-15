@@ -1,9 +1,8 @@
 body {
   font-family: Quando, sans-serif, "Times New Roman", Times, serif;
-
-  /* background-image: url("/images/rick-morty-img2.jpg");
+  background-image: url("/images/rick-morty-img2.jpg");
   background-repeat: no-repeat;
-  background-size: 1200px; */
+  background-size: cover;
 }
 
 header {

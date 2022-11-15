@@ -26,16 +26,6 @@
     width: 75%;
   }
 
-  body {
-    background-image: url("/images/rick-morty-img2.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
-  .opening-statement {
-    margin-bottom: 12rem;
-  }
-
   .ul-nav {
     margin: 0.25rem;
   }
