@@ -10,23 +10,3 @@
 .container-main {
   margin: 0 2rem;
 }
-
-@media screen and (min-width: 750px) {
-  .container-nav {
-    width: 800px;
-    margin: 0 auto;
-  }
-
-  .container-main {
-    width: 400px;
-    margin: 0 auto;
-  }
-
-  input {
-    width: 75%;
-  }
-
-  .ul-nav {
-    margin: 0.25rem;
-  }
-}

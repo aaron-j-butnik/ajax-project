@@ -14,8 +14,6 @@ function characterName(data) {
   xhr.open('GET', 'https://rickandmortyapi.com/api/character?name=' + data);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
-    // console.log(xhr.status);
-    // console.log(xhr.response);
   });
   xhr.send();
 }
