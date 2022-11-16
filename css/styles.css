@@ -20,10 +20,6 @@ header {
   text-decoration: none;
 }
 
-.styles-nav {
-  margin-bottom: 6rem;
-}
-
 .opening-statement {
   color: #f08d49;
   background-color: #505257;
@@ -45,6 +41,7 @@ input {
   border-color: #f08d49;
   border-radius: 6px;
   height: 28px;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 750px) {
