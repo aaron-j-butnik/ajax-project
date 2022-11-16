@@ -8,11 +8,34 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quando&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
+    <div class="row container-nav styles-nav">
+      <div class="column-full">
+        <p>
+          <a href="#" class="link-nav">Rick &amp; Morty <br> Researcher</a>
+        </p>
+      </div>
+    </div>
   </header>
-  <main>
+  <main class="container-main">
+    <div class="row">
+      <div class="column-full">
+        <div class="opening-statement">
+          <form action="" class="char-name-submit">
+            <p>Search the galactic database for your favorite character.</p>
+            <p>Discover new information.</p>
+            <p>Add them to your personal research database.</p>
+            <input class="char-name-input" type="text" id="character-input" placeholder="Character">
+            <button class="btn-search" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>

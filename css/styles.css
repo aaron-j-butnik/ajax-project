@@ -1,0 +1,65 @@
+body {
+  font-family: Quando, sans-serif, "Times New Roman", Times, serif;
+  background-image: url("/images/rick-morty-img2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
+}
+
+header {
+  color: #4cff8f;
+  background-color: #505257;
+  margin-bottom: 6rem;
+}
+
+.link-nav {
+  color: #4cff8f;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.opening-statement {
+  color: #f08d49;
+  background-color: #505257;
+  border-radius: 40px;
+  line-height: 1.5;
+  padding: 1rem 2rem 2rem;
+}
+
+input {
+  background-color: #e0e0e0;
+  border-radius: 6px;
+  height: 28px;
+  width: 74%;
+}
+
+.btn-search {
+  color: #f08d49;
+  background-color: #505257;
+  border-color: #f08d49;
+  border-radius: 6px;
+  height: 28px;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 750px) {
+  .container-nav {
+    width: 800px;
+    margin: auto;
+  }
+
+  .container-main {
+    width: 600px;
+    margin: auto;
+  }
+
+  .ul-nav {
+    margin: 0.25rem;
+  }
+
+  input {
+    width: 85%;
+  }
+}
