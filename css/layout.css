@@ -1,12 +1,13 @@
 .row {
   display: flex;
-}
-
-.column-full {
-  flex-basis: 100%;
+  flex-wrap: wrap;
 }
 
 .container-nav,
 .container-main {
   margin: 0 2rem;
+}
+
+.column-full {
+  flex-basis: 100%;
 }

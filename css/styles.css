@@ -1,5 +1,8 @@
 body {
   font-family: Quando, sans-serif, "Times New Roman", Times, serif;
+}
+
+.homepage-bg {
   background-image: url("/images/rick-morty-img2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -7,17 +10,24 @@ body {
   min-height: 100vh;
 }
 
+.results-bg {
+  background-color: #202329;
+}
+
 header {
   color: #4cff8f;
   background-color: #505257;
-  margin-bottom: 6rem;
 }
 
-.link-nav {
+.link-home {
   color: #4cff8f;
   font-size: 1.5rem;
   line-height: 1.5;
   text-decoration: none;
+}
+
+.container-main {
+  position: relative;
 }
 
 .opening-statement {
@@ -26,6 +36,8 @@ header {
   border-radius: 40px;
   line-height: 1.5;
   padding: 1rem 2rem 2rem;
+  position: absolute;
+  top: 6rem;
 }
 
 input {
@@ -44,15 +56,50 @@ input {
   cursor: pointer;
 }
 
+.hidden {
+  display: none;
+}
+
+h2 {
+  color: #f08d49;
+}
+
+ul {
+  flex-wrap: wrap;
+  list-style: none;
+  padding-left: 0;
+  justify-content: center;
+}
+
+li {
+  padding-top: 3rem;
+  text-align: center;
+}
+
+.name,
+.status {
+  color: #f08d49;
+  text-align: left;
+
+  /* padding-left: 6.25rem; */
+}
+
 @media screen and (min-width: 750px) {
-  .container-nav {
-    width: 800px;
+  .container-nav,
+  .container-main {
+    position: relative;
+    width: 1000px;
     margin: auto;
   }
 
-  .container-main {
+  .container-welcome-box {
     width: 600px;
     margin: auto;
+  }
+
+  .name,
+  .status {
+    padding-left: 6.25rem;
   }
 
   .ul-nav {
@@ -61,5 +108,9 @@ input {
 
   input {
     width: 85%;
+  }
+
+  .column-half {
+    flex-basis: 50%;
   }
 }
