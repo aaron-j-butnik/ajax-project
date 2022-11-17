@@ -60,7 +60,6 @@ h2 {
 }
 
 ul {
-  display: flex;
   flex-wrap: wrap;
   list-style: none;
   padding-left: 0;
@@ -68,13 +67,16 @@ ul {
 }
 
 li {
-  text-align: center;
   padding-top: 3rem;
+  text-align: center;
 }
 
 .name,
 .status {
   color: #f08d49;
+  text-align: left;
+
+  /* padding-left: 6.25rem; */
 }
 
 @media screen and (min-width: 750px) {
@@ -87,6 +89,11 @@ li {
   .container-welcome-box {
     width: 600px;
     margin: auto;
+  }
+
+  .name,
+  .status {
+    padding-left: 6.25rem;
   }
 
   .ul-nav {
