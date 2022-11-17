@@ -1,81 +1,130 @@
 var $formSearch = document.querySelector('.char-name-submit');
 var $charInput = document.querySelector('.char-name-input');
-var $welcomeBox = document.querySelector('.container-welcome-box');
+var $homePage = document.querySelector('.container-welcome-box');
 var $resultsPage = document.querySelector('.results-container');
-var $ul = document.querySelector('.results-list');
+var $detailsPage = document.querySelector('.container-details');
+var $ul = document.querySelector('.results-unordered-list');
 var $body = document.querySelector('body');
 var $viewElements = document.querySelectorAll('.view');
+var $btnSearch = document.querySelector('.btn-search');
+var $linkHome = document.querySelector('.link-home');
 
-$formSearch.addEventListener('submit', handleSubmit);
-window.addEventListener('click', handleViewSwap);
+// var $resultsCard = document.querySelector('.container-list-item');
 
-function handleViewSwap(event) {
-  if (event.target.matches('.btn-search')) {
-    for (var i = 0; i < $viewElements.length; i++) {
-      if ($welcomeBox.getAttribute('data-view') === $viewElements[i].getAttribute('data-view')) {
-        $viewElements[i].classList.add('hidden');
-        $body.classList.remove('homepage-bg');
-        $body.classList.add('results-bg');
-      } else {
-        $viewElements[i].classList.remove('hidden');
-      }
+$btnSearch.addEventListener('click', handleSearchClick);
+function handleSearchClick(event) {
+  for (var i = 0; i < $viewElements.length; i++) {
+    if ($homePage.getAttribute('data-view') === $viewElements[i].getAttribute('data-view')) {
+      $viewElements[i].classList.add('hidden');
+      $body.classList.remove('homepage-bg');
+      $body.classList.add('results-bg');
+    } else {
+      $viewElements[i].classList.remove('hidden');
     }
-    data.view = 'results-page';
   }
-  if (event.target.matches('.link-home')) {
-    for (var j = 0; j < $viewElements.length; j++) {
-      if ($resultsPage.getAttribute('data-view') === $viewElements[j].getAttribute('data-view')) {
-        $viewElements[j].classList.add('hidden');
-        $body.classList.add('homepage-bg');
-        $body.classList.remove('results-bg');
-      } else {
-        $viewElements[j].classList.remove('hidden');
-      }
-    }
-    data.view = 'home-page';
-  }
+  data.view = 'results-page';
 }
 
+$linkHome.addEventListener('click', handleHomeLinkClick);
+function handleHomeLinkClick(event) {
+  for (var j = 0; j < $viewElements.length; j++) {
+    if ($resultsPage.getAttribute('data-view') === $viewElements[j].getAttribute('data-view')) {
+      $viewElements[j].classList.add('hidden');
+      $body.classList.add('homepage-bg');
+      $body.classList.remove('results-bg');
+      $detailsPage.classList.add('hidden');
+    } else {
+      $viewElements[j].classList.remove('hidden');
+    }
+  }
+  data.view = 'home-page';
+}
+
+$formSearch.addEventListener('submit', handleSubmit);
 function handleSubmit(event) {
   event.preventDefault();
-  characterName($charInput.value);
+  searchByName($charInput.value);
   $formSearch.reset();
 }
 
-function characterName(data) {
+function searchByName(name) {
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://rickandmortyapi.com/api/character?name=' + data);
+  xhr.open('GET', 'https://rickandmortyapi.com/api/character?name=' + name);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
-    var getResponse = xhr.response.results;
+    var characters = xhr.response.results;
     $ul.textContent = '';
-    for (var i = 0; i < getResponse.length; i++) {
-      $ul.appendChild(getResults(getResponse[i]));
+    for (var i = 0; i < characters.length; i++) {
+      $ul.appendChild(getCharacterLi(characters[i]));
     }
   });
   xhr.send();
 }
 
-function getResults(response) {
-
+function getCharacterLi(character) {
   var li = document.createElement('li');
-  li.setAttribute('class', 'column-half');
+  li.setAttribute('class', 'column-half results-list-items');
+  li.setAttribute('data-character-id', character.id);
+
+  var div = document.createElement('div');
+  div.setAttribute('class', 'container-list-item');
 
   var img = document.createElement('img');
-  img.setAttribute('src', response.image);
-  img.setAttribute('class', 'image');
+  img.setAttribute('src', character.image);
+  img.setAttribute('class', 'results-list-image');
 
   var p1 = document.createElement('p');
-  p1.textContent = 'Name: ' + response.name;
+  p1.textContent = 'Name: ' + character.name;
   p1.setAttribute('class', 'name');
 
-  var p2 = document.createElement('p');
-  p2.textContent = 'Status: ' + response.status;
-  p2.setAttribute('class', 'status');
+  var characterData = {};
 
-  li.appendChild(img);
-  li.appendChild(p1);
-  li.appendChild(p2);
+  characterData.name = character.name;
+  characterData.status = character.status;
+  characterData.species = character.species;
+  characterData.gender = character.gender;
+  characterData.origin = character.origin;
+  characterData.location = character.location;
+  characterData.image = character.image;
+  characterData.charID = character.id;
+
+  data.entries.push(characterData);
+
+  li.appendChild(div);
+  div.appendChild(img);
+  div.appendChild(p1);
 
   return li;
 }
+
+// $ul.addEventListener('click', handleLiClick);
+
+// function handleLiClick(event) {
+
+//   var liCharacter = event.target.closest('[data-character-id]');
+
+//   var $nameLi = document.querySelector('.container-details .name');
+//   var $statusLi = document.querySelector('.container-details .status');
+//   var $speciesLi = document.querySelector('.container-details .species');
+//   var $genderLi = document.querySelector('.container-details .gender');
+//   var $originLi = document.querySelector('.container-details .origin');
+//   var $locationLi = document.querySelector('.container-details .location');
+//   var $detailsImg = document.querySelector('.container-details .details-img');
+
+//   for (var i = 0; i < data.entries.length; i++) {
+//     if (Number(liCharacter.getAttribute('data-character-id')) === data.entries[i].charID) {
+//       $nameLi.textContent = 'Name: ' + data.entries[i].name;
+//       $statusLi.textContent = 'Status: ' + data.entries[i].status;
+//       $speciesLi.textContent = 'Species: ' + data.entries[i].species;
+//       $genderLi.textContent = 'Gender: ' + data.entries[i].gender;
+//       $originLi.textContent = 'Origin: ' + data.entries[i].origin.name;
+//       $locationLi.textContent = 'Last Known Location: ' + data.entries[i].location.name;
+//       $detailsImg.setAttribute('src', data.entries[i].image);
+//     }
+//   }
+
+//   $resultsPage.classList.add('hidden');
+//   $homePage.classList.add('hidden');
+//   $detailsPage.classList.remove('hidden');
+//   data.view = 'details-page';
+// }
