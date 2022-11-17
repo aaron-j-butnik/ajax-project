@@ -9,8 +9,6 @@ var $viewElements = document.querySelectorAll('.view');
 var $btnSearch = document.querySelector('.btn-search');
 var $linkHome = document.querySelector('.link-home');
 
-// var $resultsCard = document.querySelector('.container-list-item');
-
 $btnSearch.addEventListener('click', handleSearchClick);
 function handleSearchClick(event) {
   for (var i = 0; i < $viewElements.length; i++) {
@@ -97,34 +95,34 @@ function getCharacterLi(character) {
   return li;
 }
 
-// $ul.addEventListener('click', handleLiClick);
+$ul.addEventListener('click', handleLiClick);
 
-// function handleLiClick(event) {
+function handleLiClick(event) {
 
-//   var liCharacter = event.target.closest('[data-character-id]');
+  var liCharacter = event.target.closest('[data-character-id]');
 
-//   var $nameLi = document.querySelector('.container-details .name');
-//   var $statusLi = document.querySelector('.container-details .status');
-//   var $speciesLi = document.querySelector('.container-details .species');
-//   var $genderLi = document.querySelector('.container-details .gender');
-//   var $originLi = document.querySelector('.container-details .origin');
-//   var $locationLi = document.querySelector('.container-details .location');
-//   var $detailsImg = document.querySelector('.container-details .details-img');
+  var $nameLi = document.querySelector('.container-details .name');
+  var $statusLi = document.querySelector('.container-details .status');
+  var $speciesLi = document.querySelector('.container-details .species');
+  var $genderLi = document.querySelector('.container-details .gender');
+  var $originLi = document.querySelector('.container-details .origin');
+  var $locationLi = document.querySelector('.container-details .location');
+  var $detailsImg = document.querySelector('.container-details .details-img');
 
-//   for (var i = 0; i < data.entries.length; i++) {
-//     if (Number(liCharacter.getAttribute('data-character-id')) === data.entries[i].charID) {
-//       $nameLi.textContent = 'Name: ' + data.entries[i].name;
-//       $statusLi.textContent = 'Status: ' + data.entries[i].status;
-//       $speciesLi.textContent = 'Species: ' + data.entries[i].species;
-//       $genderLi.textContent = 'Gender: ' + data.entries[i].gender;
-//       $originLi.textContent = 'Origin: ' + data.entries[i].origin.name;
-//       $locationLi.textContent = 'Last Known Location: ' + data.entries[i].location.name;
-//       $detailsImg.setAttribute('src', data.entries[i].image);
-//     }
-//   }
+  for (var i = 0; i < data.entries.length; i++) {
+    if (Number(liCharacter.getAttribute('data-character-id')) === data.entries[i].charID) {
+      $nameLi.textContent = 'Name: ' + data.entries[i].name;
+      $statusLi.textContent = 'Status: ' + data.entries[i].status;
+      $speciesLi.textContent = 'Species: ' + data.entries[i].species;
+      $genderLi.textContent = 'Gender: ' + data.entries[i].gender;
+      $originLi.textContent = 'Origin: ' + data.entries[i].origin.name;
+      $locationLi.textContent = 'Last Known Location: ' + data.entries[i].location.name;
+      $detailsImg.setAttribute('src', data.entries[i].image);
+    }
+  }
 
-//   $resultsPage.classList.add('hidden');
-//   $homePage.classList.add('hidden');
-//   $detailsPage.classList.remove('hidden');
-//   data.view = 'details-page';
-// }
+  $resultsPage.classList.add('hidden');
+  $homePage.classList.add('hidden');
+  $detailsPage.classList.remove('hidden');
+  data.view = 'details-page';
+}
