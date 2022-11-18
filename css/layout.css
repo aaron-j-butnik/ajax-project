@@ -11,3 +11,7 @@
 .column-full {
   flex-basis: 100%;
 }
+
+.hidden {
+  display: none;
+}

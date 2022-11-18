@@ -10,6 +10,10 @@ body {
   min-height: 100vh;
 }
 
+img {
+  width: 100%;
+}
+
 .results-bg {
   background-color: #202329;
 }
@@ -56,10 +60,6 @@ input {
   cursor: pointer;
 }
 
-.hidden {
-  display: none;
-}
-
 h2 {
   color: #f08d49;
 }
@@ -71,17 +71,54 @@ ul {
   justify-content: center;
 }
 
-li {
-  padding-top: 3rem;
-  text-align: center;
+.results-list-items {
+  padding-bottom: 2rem;
+}
+
+.results-list-image:hover {
+  cursor: pointer;
+}
+
+.container-list-item {
+  box-shadow: 7px 7px 7px 4px rgba(0, 0, 0, 0.2);
+  background-color: #505257;
+  border: 12px solid #505257;
+  transition: 0.5s;
+  margin: auto;
+}
+
+.container-list-item:hover {
+  transform: scale(1.1);
 }
 
 .name,
-.status {
+.status,
+.species,
+.gender,
+.origin,
+.location {
   color: #f08d49;
   text-align: left;
+  margin: 0.5rem 0 0;
+}
 
-  /* padding-left: 6.25rem; */
+.detail-row {
+  justify-content: center;
+}
+
+.details-img-container {
+  padding: 1rem 1rem 0;
+  background-color: #505257;
+}
+
+.details-text-container {
+  padding: 0 1rem;
+  background-color: #505257;
+  max-width: 332px;
+}
+
+.details-list-item {
+  padding-bottom: 0.75rem;
 }
 
 @media screen and (min-width: 750px) {
@@ -97,11 +134,6 @@ li {
     margin: auto;
   }
 
-  .name,
-  .status {
-    padding-left: 6.25rem;
-  }
-
   .ul-nav {
     margin: 0.25rem;
   }
@@ -112,5 +144,13 @@ li {
 
   .column-half {
     flex-basis: 50%;
+  }
+
+  .container-list-item {
+    width: 70%;
+  }
+
+  .details-img-container {
+    padding-bottom: 1rem;
   }
 }
