@@ -122,8 +122,8 @@ ul {
   color: #f08d49;
   text-align: left;
   margin: 0.5rem 0 0;
-  font-size: 1.5rem;
-  line-height: 1.75;
+  font-size: 1.25rem;
+  line-height: 1.25;
 }
 
 @media screen and (min-width: 750px) {
@@ -160,10 +160,6 @@ ul {
   }
 
   .details-list-item {
-    padding-bottom: 0.75rem;
-    color: #f08d49;
-    text-align: left;
-    margin: 0.5rem 0 0;
     font-size: 1.5rem;
     line-height: 1.75;
   }
