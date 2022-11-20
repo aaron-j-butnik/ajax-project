@@ -3,6 +3,5 @@
 var data = {
   view: 'home-page',
   entries: [],
-  collection: null,
-  nextCollectionID: 1
+  nextEntryID: 1
 };
