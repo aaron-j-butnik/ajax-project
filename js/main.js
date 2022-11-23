@@ -31,6 +31,7 @@ function handleHomeLinkClick(event) {
       $body.classList.add('homepage-bg');
       $body.classList.remove('results-bg');
       $detailsPage.classList.add('hidden');
+      $databasePage.classList.add('hidden');
     } else {
       $viewElements[j].classList.remove('hidden');
     }
@@ -108,6 +109,7 @@ function handleLiClick(event) {
   var $originLi = document.querySelector('.container-details .origin');
   var $locationLi = document.querySelector('.container-details .location');
   var $detailsImg = document.querySelector('.container-details .details-img');
+  var $detailsRow = document.querySelector('.container-details .detail-row');
 
   for (var i = 0; i < data.entries.length; i++) {
     if (Number(liCharacter.getAttribute('data-character-id')) === data.entries[i].charID) {
@@ -118,6 +120,7 @@ function handleLiClick(event) {
       $originLi.textContent = 'Origin: ' + data.entries[i].origin.name;
       $locationLi.textContent = 'Last Known Location: ' + data.entries[i].location.name;
       $detailsImg.setAttribute('src', data.entries[i].image);
+      $detailsRow.setAttribute('data-character-id', data.entries[i].charID);
     }
   }
 
