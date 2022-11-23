@@ -146,10 +146,10 @@ function handleAddToDatabase(event) {
     }
   }
 
-  for (var j = 0; j < data.database.length; j++) {
-    var entryFromDatabase = data.database[j];
-  }
-  $divDatabaseCharImg.appendChild(getPersonalDatabaseImgLi(entryFromDatabase));
+  // for (var j = 0; j < data.database.length; j++) {
+  //   var entryFromDatabase = data.database[j];
+  // }
+  $divDatabaseCharImg.appendChild(getPersonalDatabaseImgLi(data.database[data.database.length - 1]));
 
   $resultsPage.classList.add('hidden');
   $homePage.classList.add('hidden');
