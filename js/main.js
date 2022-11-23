@@ -145,14 +145,23 @@ function handleAddToDatabase(event) {
       data.database.push(data.entries[i]);
     }
   }
-
   $divDatabaseCharImg.appendChild(getPersonalDatabaseImgLi(data.database[data.database.length - 1]));
+
+  var $cards = document.querySelectorAll('.card-inner');
+
+  for (var j = 0; j < $cards.length; j++) {
+    $cards[j].addEventListener('click', handleCardFlip);
+  }
 
   $resultsPage.classList.add('hidden');
   $homePage.classList.add('hidden');
   $detailsPage.classList.add('hidden');
   $databasePage.classList.remove('hidden');
   data.view = 'database-page';
+}
+
+function handleCardFlip() {
+  this.classList.toggle('is-flipped');
 }
 
 function getPersonalDatabaseImgLi(dataEntries) {
