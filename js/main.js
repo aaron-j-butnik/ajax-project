@@ -31,6 +31,7 @@ function handleHomeLinkClick(event) {
       $body.classList.add('homepage-bg');
       $body.classList.remove('results-bg');
       $detailsPage.classList.add('hidden');
+      $databasePage.classList.add('hidden');
     } else {
       $viewElements[j].classList.remove('hidden');
     }
@@ -108,6 +109,7 @@ function handleLiClick(event) {
   var $originLi = document.querySelector('.container-details .origin');
   var $locationLi = document.querySelector('.container-details .location');
   var $detailsImg = document.querySelector('.container-details .details-img');
+  var $detailsRow = document.querySelector('.container-details .detail-row');
 
   for (var i = 0; i < data.entries.length; i++) {
     if (Number(liCharacter.getAttribute('data-character-id')) === data.entries[i].charID) {
@@ -118,6 +120,7 @@ function handleLiClick(event) {
       $originLi.textContent = 'Origin: ' + data.entries[i].origin.name;
       $locationLi.textContent = 'Last Known Location: ' + data.entries[i].location.name;
       $detailsImg.setAttribute('src', data.entries[i].image);
+      $detailsRow.setAttribute('data-character-id', data.entries[i].charID);
     }
   }
 
@@ -125,4 +128,89 @@ function handleLiClick(event) {
   $homePage.classList.add('hidden');
   $detailsPage.classList.remove('hidden');
   data.view = 'details-page';
+}
+
+var $btnAdd = document.querySelector('.add-to-database');
+var $divDatabaseCharImg = document.querySelector('.database-char-img');
+var $databasePage = document.querySelector('.container-database-page');
+
+$btnAdd.addEventListener('click', handleAddToDatabase);
+
+function handleAddToDatabase(event) {
+
+  var databaseCharacter = event.target.closest('[data-character-id]');
+
+  for (var i = 0; i < data.entries.length; i++) {
+    if (Number(databaseCharacter.getAttribute('data-character-id')) === data.entries[i].charID) {
+      data.database.push(data.entries[i]);
+    }
+  }
+
+  $divDatabaseCharImg.appendChild(getPersonalDatabaseImgLi(data.database[data.database.length - 1]));
+
+  $resultsPage.classList.add('hidden');
+  $homePage.classList.add('hidden');
+  $detailsPage.classList.add('hidden');
+  $databasePage.classList.remove('hidden');
+  data.view = 'database-page';
+}
+
+function getPersonalDatabaseImgLi(dataEntries) {
+  var databaseDivCard = document.createElement('div');
+  databaseDivCard.setAttribute('class', 'column-half card');
+
+  var databaseDivCardInner = document.createElement('div');
+  databaseDivCardInner.setAttribute('class', 'card-inner');
+  databaseDivCardInner.setAttribute('data-character-id', dataEntries.charID);
+
+  var databaseDivCardFront = document.createElement('div');
+  databaseDivCardFront.setAttribute('class', 'card-face card-front');
+
+  var databaseImg = document.createElement('img');
+  databaseImg.setAttribute('src', dataEntries.image);
+
+  var databaseDivCardBack = document.createElement('div');
+  databaseDivCardBack.setAttribute('class', 'card-face card-back');
+
+  var databaseDivCardBackContent = document.createElement('div');
+  databaseDivCardBackContent.setAttribute('class', 'card-back-content');
+
+  var databaseName = document.createElement('span');
+  databaseName.textContent = 'Name: ' + dataEntries.name;
+  databaseName.setAttribute('class', 'name');
+
+  var databaseStatus = document.createElement('span');
+  databaseStatus.textContent = 'Status: ' + dataEntries.status;
+  databaseStatus.setAttribute('class', 'status');
+
+  var databaseSpecies = document.createElement('span');
+  databaseSpecies.textContent = 'Species: ' + dataEntries.species;
+  databaseSpecies.setAttribute('class', 'species');
+
+  var databaseGender = document.createElement('span');
+  databaseGender.textContent = 'Gender: ' + dataEntries.gender;
+  databaseGender.setAttribute('class', 'gender');
+
+  var databaseOrigin = document.createElement('span');
+  databaseOrigin.textContent = 'Origin: ' + dataEntries.origin.name;
+  databaseOrigin.setAttribute('class', 'origin');
+
+  var databaseLocation = document.createElement('span');
+  databaseLocation.textContent = 'Last Known Location: ' + dataEntries.location.name;
+  databaseLocation.setAttribute('class', 'location');
+
+  databaseDivCard.appendChild(databaseDivCardInner);
+  databaseDivCardInner.appendChild(databaseDivCardFront);
+  databaseDivCardFront.appendChild(databaseImg);
+
+  databaseDivCardInner.appendChild(databaseDivCardBack);
+  databaseDivCardBack.appendChild(databaseDivCardBackContent);
+  databaseDivCardBackContent.appendChild(databaseName);
+  databaseDivCardBackContent.appendChild(databaseStatus);
+  databaseDivCardBackContent.appendChild(databaseSpecies);
+  databaseDivCardBackContent.appendChild(databaseGender);
+  databaseDivCardBackContent.appendChild(databaseOrigin);
+  databaseDivCardBackContent.appendChild(databaseLocation);
+
+  return databaseDivCard;
 }

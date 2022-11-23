@@ -34,6 +34,11 @@ header {
   position: relative;
 }
 
+.container-welcome-box {
+  width: 600px;
+  margin: auto;
+}
+
 .opening-statement {
   color: #f08d49;
   background-color: #505257;
@@ -64,7 +69,7 @@ h2 {
   color: #f08d49;
 }
 
-ul {
+.results-unordered-list {
   flex-wrap: wrap;
   list-style: none;
   padding-left: 0;
@@ -84,7 +89,7 @@ ul {
   background-color: #505257;
   border: 12px solid #505257;
   transition: 0.5s;
-  margin: auto;
+  margin: 0 2rem;
 }
 
 .container-list-item:hover {
@@ -104,17 +109,19 @@ ul {
 
 .detail-row {
   justify-content: center;
+  margin: 0 auto;
 }
 
 .details-img-container {
-  padding: 1rem 1rem 0;
+  padding: 1rem;
+  padding-bottom: 0;
   background-color: #505257;
 }
 
 .details-text-container {
-  padding: 0 1rem;
+  padding: 0 1rem 2rem;
   background-color: #505257;
-  max-width: 332px;
+  width: 332px;
 }
 
 .details-list-item {
@@ -122,20 +129,65 @@ ul {
   color: #f08d49;
   text-align: left;
   margin: 0.5rem 0 0;
-  font-size: 1.25rem;
-  line-height: 1.25;
+  font-size: 1rem;
+  line-height: 1.1;
 }
 
-@media screen and (min-width: 750px) {
+.add-to-database {
+  color: #4cff8f;
+  border: 2px solid #4cff8f;
+  border-radius: 8px;
+  text-decoration: none;
+  padding: 0.5rem 4.5rem;
+}
+
+.database-char-img {
+  justify-content: center;
+}
+
+span {
+  display: block;
+}
+
+.card {
+  padding: 1rem;
+  width: 400px;
+  height: 400px;
+}
+
+.card-inner {
+  box-shadow: 7px 7px 7px 4px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+}
+
+.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  backface-visibility: hidden;
+  overflow: hidden;
+  border: 18px solid #505257;
+}
+
+.card-back {
+  background-color: #505257;
+  transform: rotateY(180deg);
+}
+
+@media screen and (min-width: 950px) {
   .container-nav,
   .container-main {
     position: relative;
     width: 1000px;
-    margin: auto;
-  }
-
-  .container-welcome-box {
-    width: 600px;
     margin: auto;
   }
 
@@ -153,14 +205,47 @@ ul {
 
   .container-list-item {
     width: 70%;
+    margin: 0 auto;
+  }
+
+  .detail-row {
+    margin: auto;
   }
 
   .details-img-container {
     padding-bottom: 1rem;
   }
 
+  .details-text-container {
+    max-width: 400px;
+  }
+
   .details-list-item {
-    font-size: 1.5rem;
-    line-height: 1.75;
+    font-size: 1.25rem;
+    line-height: 1.72;
+  }
+
+  .add-to-database {
+    padding: 0.5rem 6.5rem;
+  }
+
+  .card {
+    padding: 2rem;
+    width: 500px;
+    height: 500px;
+  }
+}
+
+@media screen and (min-width: 727px) {
+  .details-img-container {
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .card {
+    padding: 1rem;
+    width: 400px;
+    height: 400px;
   }
 }
