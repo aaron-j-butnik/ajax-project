@@ -126,3 +126,34 @@ function handleLiClick(event) {
   $detailsPage.classList.remove('hidden');
   data.view = 'details-page';
 }
+
+var $btnAdd = document.querySelector('.add-to-database');
+// var $divDatabaseCharImg = document.querySelector('.database-char-img');
+var $databasePage = document.querySelector('.container-database-page');
+
+$btnAdd.addEventListener('click', handleAddToDatabase);
+
+function handleAddToDatabase(event) {
+
+  var databaseCharacter = event.target.closest('[data-character-id]');
+
+  for (var i = 0; i < data.entries.length; i++) {
+    if (Number(databaseCharacter.getAttribute('data-character-id')) === data.entries[i].charID) {
+      data.database = data.entries[i];
+    }
+  }
+  // $divDatabaseCharImg.appendChild(getPersonalDatabaseImgLi(data.database));
+
+  // var $cards = document.querySelectorAll('.card-inner');
+
+  // for (var i = 0; i < $cards.length; i++) {
+  //   $cards[i].addEventListener('click', handleCardFlip);
+
+  // }
+
+  $resultsPage.classList.add('hidden');
+  $homePage.classList.add('hidden');
+  $detailsPage.classList.add('hidden');
+  $databasePage.classList.remove('hidden');
+  data.view = 'database-page';
+}
