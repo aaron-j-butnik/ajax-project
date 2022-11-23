@@ -142,10 +142,14 @@ function handleAddToDatabase(event) {
 
   for (var i = 0; i < data.entries.length; i++) {
     if (Number(databaseCharacter.getAttribute('data-character-id')) === data.entries[i].charID) {
-      data.database = data.entries[i];
+      data.database.push(data.entries[i]);
     }
   }
-  $divDatabaseCharImg.appendChild(getPersonalDatabaseImgLi(data.database));
+
+  for (var j = 0; j < data.database.length; j++) {
+    var entryFromDatabase = data.database[j];
+  }
+  $divDatabaseCharImg.appendChild(getPersonalDatabaseImgLi(entryFromDatabase));
 
   $resultsPage.classList.add('hidden');
   $homePage.classList.add('hidden');
