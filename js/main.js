@@ -128,7 +128,7 @@ function handleLiClick(event) {
 }
 
 var $btnAdd = document.querySelector('.add-to-database');
-// var $divDatabaseCharImg = document.querySelector('.database-char-img');
+var $divDatabaseCharImg = document.querySelector('.database-char-img');
 var $databasePage = document.querySelector('.container-database-page');
 
 $btnAdd.addEventListener('click', handleAddToDatabase);
@@ -142,18 +142,71 @@ function handleAddToDatabase(event) {
       data.database = data.entries[i];
     }
   }
-  // $divDatabaseCharImg.appendChild(getPersonalDatabaseImgLi(data.database));
-
-  // var $cards = document.querySelectorAll('.card-inner');
-
-  // for (var i = 0; i < $cards.length; i++) {
-  //   $cards[i].addEventListener('click', handleCardFlip);
-
-  // }
+  $divDatabaseCharImg.appendChild(getPersonalDatabaseImgLi(data.database));
 
   $resultsPage.classList.add('hidden');
   $homePage.classList.add('hidden');
   $detailsPage.classList.add('hidden');
   $databasePage.classList.remove('hidden');
   data.view = 'database-page';
+}
+
+function getPersonalDatabaseImgLi(dataEntries) {
+  var databaseDivCard = document.createElement('div');
+  databaseDivCard.setAttribute('class', 'column-half card');
+
+  var databaseDivCardInner = document.createElement('div');
+  databaseDivCardInner.setAttribute('class', 'card-inner');
+  databaseDivCardInner.setAttribute('data-character-id', dataEntries.charID);
+
+  var databaseDivCardFront = document.createElement('div');
+  databaseDivCardFront.setAttribute('class', 'card-face card-front');
+
+  var databaseImg = document.createElement('img');
+  databaseImg.setAttribute('src', dataEntries.image);
+
+  var databaseDivCardBack = document.createElement('div');
+  databaseDivCardBack.setAttribute('class', 'card-face card-back');
+
+  var databaseDivCardBackContent = document.createElement('div');
+  databaseDivCardBackContent.setAttribute('class', 'card-back-content');
+
+  var databaseName = document.createElement('span');
+  databaseName.textContent = 'Name: ' + dataEntries.name;
+  databaseName.setAttribute('class', 'name');
+
+  var databaseStatus = document.createElement('span');
+  databaseStatus.textContent = 'Status: ' + dataEntries.status;
+  databaseStatus.setAttribute('class', 'status');
+
+  var databaseSpecies = document.createElement('span');
+  databaseSpecies.textContent = 'Species: ' + dataEntries.species;
+  databaseSpecies.setAttribute('class', 'species');
+
+  var databaseGender = document.createElement('span');
+  databaseGender.textContent = 'Gender: ' + dataEntries.gender;
+  databaseGender.setAttribute('class', 'gender');
+
+  var databaseOrigin = document.createElement('span');
+  databaseOrigin.textContent = 'Origin: ' + dataEntries.origin.name;
+  databaseOrigin.setAttribute('class', 'origin');
+
+  var databaseLocation = document.createElement('span');
+  databaseLocation.textContent = 'Last Known Location: ' + dataEntries.location.name;
+  databaseLocation.setAttribute('class', 'location');
+
+  databaseDivCard.appendChild(databaseDivCardInner);
+  databaseDivCardInner.appendChild(databaseDivCardFront);
+  databaseDivCardFront.appendChild(databaseImg);
+
+  databaseDivCardInner.appendChild(databaseDivCardBack);
+  databaseDivCardBack.appendChild(databaseDivCardBackContent);
+  databaseDivCardBackContent.appendChild(databaseName);
+  databaseDivCardBackContent.appendChild(databaseStatus);
+  databaseDivCardBackContent.appendChild(databaseSpecies);
+  databaseDivCardBackContent.appendChild(databaseGender);
+  databaseDivCardBackContent.appendChild(databaseOrigin);
+  databaseDivCardBackContent.appendChild(databaseLocation);
+
+  return databaseDivCard;
 }
