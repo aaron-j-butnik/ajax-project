@@ -3,7 +3,7 @@ body {
 }
 
 .homepage-bg {
-  background-image: url("/images/rick-morty-img2.jpg");
+  background-image: url("../images/rick-morty-img2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
